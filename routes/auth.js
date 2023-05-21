@@ -24,6 +24,8 @@ router.post("/", async (req, res) => {
 
 		const token = user.generateAuthToken();
 
+		console.log("\n\nBefore checking for subscription!!\n");
+
 		const subscribed_plan = await Subscription.findOne({email: req.body.email});
 		console.log("\nSUBSCRIBED PLAN: " , subscribed_plan.plan);
 
