@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../models/user");
-const Subscription = require("../models/subscriptions");
+const Subscription = require('../models/subscriptions');
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
 
@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
 		console.log("\n\nBefore checking for subscription!!\n");
 
 		const subscribed_plan = await Subscription.findOne({email: req.body.email});
-		console.log("\nSUBSCRIBED PLAN: " , subscribed_plan.plan);
+		console.log("\nSUBSCRIBED PLAN: ");
 
 		if(subscribed_plan)
 			res.status(200).send({ data: token, message: "logged in successfully", userEmail: req.body.email, userPlan: subscribed_plan.plan });
